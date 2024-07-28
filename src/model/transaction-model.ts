@@ -1,4 +1,4 @@
-import {Transaction, TransactionItem, User, Wisata} from "@prisma/client";
+import {Transaction, User} from "@prisma/client";
 import {toUserResponse, UserResponse} from "./user-model";
 import {ResponseError} from "../error/response-error";
 import {AddressResponse} from "./address-model";
