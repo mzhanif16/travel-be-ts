@@ -53,6 +53,7 @@ model Wisata {
   TransactionItem TransactionItem[]
   created_at      String            @default("") @db.VarChar(100)
   updated_at      String            @default("") @db.VarChar(100)
+  category        String?           @db.VarChar(100)
 
   @@map("wisata")
 }
