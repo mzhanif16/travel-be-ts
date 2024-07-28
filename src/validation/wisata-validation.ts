@@ -7,6 +7,7 @@ export class WisataValidation {
         rate: z.number().min(1).max(100).optional(),
         img_wisata: z.string().min(1).max(100).optional(),
         price: z.string().min(1).max(100).optional(),
+        category: z.string().min(1).max(100).optional(),
     })
     static readonly UPDATE : ZodType = z.object({
         id: z.string(),

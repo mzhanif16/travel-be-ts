@@ -9,6 +9,8 @@ export type AddressResponse = {
     country: string
     postal_code: string
     user?: UserResponse
+    created_at: string
+    updated_at: string
 }
 
 export type CreateAddressRequest = {
@@ -25,9 +27,11 @@ export function toAddressResponse(address: Address): AddressResponse {
         id: address.id,
         street: address.street,
         city: address.city,
-        province:address.province,
-        country:address.country,
-        postal_code:address.postal_code
+        province: address.province,
+        country: address.country,
+        postal_code: address.postal_code,
+        created_at: address.created_at,
+        updated_at: address.updated_at,
     }
 }
 
@@ -35,10 +39,12 @@ export function toAddressUserResponse(address: Address & { user: User }): Addres
     return {
         id: address.id,
         street: address.street ?? null,
-        city: address.city?? null,
-        province:address.province?? null,
-        country:address.country,
-        postal_code:address.postal_code,
-        user: toUserResponse(address.user)
+        city: address.city ?? null,
+        province: address.province ?? null,
+        country: address.country,
+        postal_code: address.postal_code,
+        user: toUserResponse(address.user),
+        created_at: address.created_at,
+        updated_at: address.updated_at,
     }
 }

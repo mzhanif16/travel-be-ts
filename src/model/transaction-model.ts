@@ -9,6 +9,8 @@ export type TransactionResponse = {
     address?: AddressResponse
     total_price_item: number | null
     status: string | null
+    created_at: string
+    updated_at: string
 }
 
 export type CreateTransactionRequest = {
@@ -33,6 +35,8 @@ export function toTransactionAddressWisataResponse(transaction: Transaction & {
         id: transaction.id,
         total_price_item:transaction.total_price_item,
         user: toUserResponse(transaction.user),
-        status: transaction.status
+        status: transaction.status,
+        created_at: transaction.created_at,
+        updated_at: transaction.updated_at,
     }
 }

@@ -5,6 +5,8 @@ export type UserResponse = {
     username: string
     email: string
     token?: string
+    created_at: string
+    updated_at: string
 }
 
 export type CreateUserRequest = {
@@ -37,6 +39,8 @@ export function toUserResponse(user: User): UserResponse{
     return {
         id: user.id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
     }
 }
