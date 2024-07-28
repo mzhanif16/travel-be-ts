@@ -1,6 +1,5 @@
 node_modules
 dist
 uploads
-README.md
 # Keep environment variables out of version control
 .env
