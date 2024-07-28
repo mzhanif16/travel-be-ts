@@ -1,0 +1,102 @@
+### Register User
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "mzhanif",
+  "email": "zakihanif155@gmail.com",
+  "password": "hanif53gan"
+}
+
+### Verify OTP User
+POST http://localhost:3000/api/users/verify-register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "zakihanif155@gmail.com",
+  "otp": "5119"
+}
+
+### Request Reset Password User
+POST http://localhost:3000/api/users/requestPasswordReset
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "zakihanif155@gmail.com"
+}
+
+### Reset Password User
+POST http://localhost:3000/api/users/reset-password
+Content-Type: application/json
+Accept: application/json
+
+{
+  "token": "8ccfccb6-02f9-4982-b6ca-51d5ba3d2a9c",
+  "newPassword": "hanif155gan"
+}
+
+### Update User
+PUT http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4NDM1ODVhLWZiODItNDIwZi04Mzc0LWNiY2Q2ZTAzZGRkZCIsImVtYWlsIjoiemFraWhhbmlmMTZAZ21haWwuY29tIiwiaWF0IjoxNzIyMDE2Mjg0LCJleHAiOjE3MjIxMDI2ODR9._euHWcFjQWK7UoFdRmoY2wcKwHo6Aqaq1vK5mzbExDw
+
+{
+  "username": "mzhanif155",
+  "email": "zakihanif155@gmail.com",
+  "password": "hanif53gan"
+}
+
+### Login User
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "zakihanif155@gmail.com",
+  "password": "hanif155gan"
+}
+
+### Get User
+GET http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI4ZDdhZGMwLTU5NTktNDU5NC05MGM1LTU5NWViYzBlMThkNCIsImVtYWlsIjoiemFraWhhbmlmMTZAZ21haWwuY29tIiwiaWF0IjoxNzIyMDIwMTg4LCJleHAiOjE3MjIxMDY1ODh9.z-qUmuyQF1L443-Iji00GzzHcdWQJR_pi-IqxNI25m8
+
+### Logout User
+POST http://localhost:3000/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwNDIyN2ZjLWRjMDMtNDYyNy1iYjFlLWRhOWU5NWMxYjQ0MSIsImVtYWlsIjoiemFraWhhbmlmMTU1QGdtYWlsLmNvbSIsImlhdCI6MTcyMjE3ODExMywiZXhwIjoxNzIyMjY0NTEzfQ.MNuz-sn_dYbAc_tp88pov3kxsSFfBXWWMJ2rjUIc0wM
+
+### Create Address
+POST http://localhost:3000/api/users/bd8d2c3b-70d9-4feb-9178-2519714a0105/address
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJkOGQyYzNiLTcwZDktNGZlYi05MTc4LTI1MTk3MTRhMDEwNSIsImVtYWlsIjoiemFraWhhbmlmMTZAZ21haWwuY29tIiwiaWF0IjoxNzIyMDczNzEzLCJleHAiOjE3MjIxNjAxMTN9.xmXh4vdSQhR_S0AGPwHGoRuAXsbopKKJGcbkuuJz0sA
+
+{
+"street" : "Jalan Nenas 6 No.121 Pancoran Mas",
+"city" : "Depok",
+"province" : "Jawa Barat",
+"country" : "Indonesia",
+"postal_code" : "1634"
+}
+
+### Get Address
+GET http://localhost:3000/api/users/address
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4ZDhjOWZlLTcxODgtNDVhMi1hNzk2LWZmMmYwMWVmOWYyZCIsImVtYWlsIjoiemFraWhhbmlmMTZAZ21haWwuY29tIiwiaWF0IjoxNzIyMDIzMDI5LCJleHAiOjE3MjIxMDk0Mjl9._xSBDUFMSA2K8ZCKnTr5PaBbZQDUnUyoSZ70oY-0Kf4
+
+### Create Wisata
+POST http://localhost:3000/api/wisata
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4ZDhjOWZlLTcxODgtNDVhMi1hNzk2LWZmMmYwMWVmOWYyZCIsImVtYWlsIjoiemFraWhhbmlmMTZAZ21haWwuY29tIiwiaWF0IjoxNzIyMDIzMDI5LCJleHAiOjE3MjIxMDk0Mjl9._xSBDUFMSA2K8ZCKnTr5PaBbZQDUnUyoSZ70oY-0Kf4
+
+{
+  "title" : "Wisata Taman Budaya Depok",
+  "description" : "Wisata Taman Budaya Depok 1, terdapat arena permainan anak anak"
+}

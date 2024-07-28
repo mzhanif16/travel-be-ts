@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   String        @id @db.VarChar(100)
+  username             String        @db.VarChar(100)
+  email                String        @unique @db.VarChar(100)
+  password             String        @db.VarChar(100)
+  token                String?       @db.Text
+  address              Address?
+  transaction          Transaction[]
+  resetToken           String?       @db.VarChar(100)
+  resetTokenExpiration DateTime?
+  is_verified          Boolean       @default(false)
+  created_at           String        @default("") @db.VarChar(100)
+  updated_at           String        @default("") @db.VarChar(100)
+  otp                  OTP?
+
+  @@map("user")
+}
+
+model OTP {
+  id         String @id @db.VarChar(100)
+  user_id    String @unique
+  user       User   @relation(fields: [user_id], references: [id])
+  otp        String @db.VarChar(6)
+  created_at String @default("") @db.VarChar(100)
+  updated_at String @default("") @db.VarChar(100)
+
+  @@map("otp")
+}
+
+model Wisata {
+  id              String            @id @db.VarChar(100)
+  title           String            @db.VarChar(100)
+  description     String?           @db.VarChar(100)
+  rate            Float?            @db.Float
+  img_wisata      String?           @db.VarChar(100)
+  price           String?           @db.VarChar(100)
+  is_favourite    Boolean?          @default(false)
+  TransactionItem TransactionItem[]
+  created_at      String            @default("") @db.VarChar(100)
+  updated_at      String            @default("") @db.VarChar(100)
+
+  @@map("wisata")
+}
+
+model Address {
+  id          String  @id @db.VarChar(100)
+  street      String? @db.VarChar(255)
+  city        String? @db.VarChar(100)
+  province    String? @db.VarChar(100)
+  country     String  @db.VarChar(100)
+  postal_code String  @db.VarChar(10)
+  userId      String  @unique
+  created_at  String  @default("") @db.VarChar(100)
+  updated_at  String  @default("") @db.VarChar(100)
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("address")
+}
+
+model Transaction {
+  id               String            @id @db.VarChar(100)
+  user             User?             @relation(fields: [userId], references: [id])
+  userId           String?           @db.VarChar(100)
+  total_price_item Int?              @db.Int
+  transationItem   TransactionItem[]
+  status           String?           @db.VarChar(100)
+  created_at       String            @default("") @db.VarChar(100)
+  updated_at       String            @default("") @db.VarChar(100)
+
+  @@map("transaction")
+}
+
+model TransactionItem {
+  id            String       @id @db.VarChar(100)
+  qty           Int          @db.Int
+  total_price   Int?         @db.Int
+  transaction   Transaction? @relation(fields: [transactionId], references: [id])
+  transactionId String?      @db.VarChar(100)
+  wisata        Wisata?      @relation(fields: [wisataId], references: [id])
+  wisataId      String?      @db.VarChar(100)
+  created_at    String       @default("") @db.VarChar(100)
+  updated_at    String       @default("") @db.VarChar(100)
+
+  @@map("transaction_item")
+}
